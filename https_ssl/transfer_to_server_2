@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#script to send files to server. 4 params.
+#check number of parameters
+if [$# -lt 4]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+#params an shit
+file="$1"
+ip=54.146.238.187
+username=ubuntu
+path_to_key=/home/codespace/.ssh/id_rsa
+
+ scp -o "StrictHostKeyChecking no" -i "$path_to_key" "$file" "$username@$ip:~/"
